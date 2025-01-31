@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const loadTasks = async () => {
       try {
-        const tasksData = await fetchTasks();
+        const tasksData = await fetchTasks(); // Fetch only user's tasks
         setTasks(tasksData);
       } catch {
         toast.error("Error fetching tasks!");

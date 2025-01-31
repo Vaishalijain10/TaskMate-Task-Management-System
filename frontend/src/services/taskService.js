@@ -2,23 +2,35 @@
 import axios from "axios";
 import { taskUrl } from "./URL";
 
-const authHeader = () => ({
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-});
+const authHeader = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("No auth token found");
+    return {}; // Return empty headers to avoid sending undefined
+  }
+  return {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+};
+
+
 
 export const fetchTasks = async () => {
   try {
-    const { data } = await axios.get(taskUrl); // Remove authHeader() if not required
+    const { data } = await axios.get(taskUrl, authHeader());
     return data;
   } catch (error) {
-    console.error("Error fetching tasks:", error);
+    console.error(
+      "Error fetching tasks:",
+      error.response?.data || error.message
+    );
     throw error;
   }
 };
 
 export const addTask = async (task) => {
   try {
-    const { data } = await axios.post(taskUrl, task); // Remove authHeader() for now
+    const { data } = await axios.post(taskUrl, task, authHeader());
     return data;
   } catch (error) {
     console.error("Error adding task:", error.response?.data || error.message);
@@ -41,5 +53,13 @@ export const editTask = async (id, updatedTask) => {
 };
 
 export const deleteTask = async (id) => {
-  await axios.delete(`${taskUrl}/${id}`, authHeader());
+  try {
+    await axios.delete(`${taskUrl}/${id}`, authHeader());
+  } catch (error) {
+    console.error(
+      "Error deleting task:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
 };
