@@ -4,7 +4,7 @@ const isLocalhost = window.location.hostname === "localhost";
 
 export const baseUrl = isLocalhost
   ? "http://localhost:1112"
-  : import.meta.env.VITE_BASE_URL; // For Vite - backend link
+  : import.meta.env.VITE_BASE_URL || "https://taskmate-backend.vercel.app"; // For Vite - backend link
 
 
 export const taskUrl = `${baseUrl}/tasks`;

@@ -18,10 +18,12 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // For local testing
+      "https://taskmate-motivate-collaborate-create-two.vercel.app",
       process.env.FRONTEND_URL, // Deployed frontend
     ],
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     credentials: true, // Allow cookies if needed
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
