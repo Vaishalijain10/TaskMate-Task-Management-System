@@ -1,0 +1,13 @@
+// backend setup - 
+
+1. install required packages 
+dependencies - 
+bcrypt : 
+cors :
+dotenv : 
+express : 
+jsonwebtoken : 
+mongoose : 
+multer :  
+nodemailer : 
+nodemon :

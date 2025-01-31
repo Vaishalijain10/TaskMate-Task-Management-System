@@ -1,0 +1,20 @@
+1. commands - 
+
+1. npm create-vite@latest  
+2. folder name - frontend
+3. select - React
+4. select - js
+5. npm install 
+6. tailwind - 4 points follow from docs
+7. npx tailwindcss init 
+
+
+npm i tailwindcss init
+npx tailwindcss init 
+
+----------------------------------------------------------
+after initializing - 
+
+1. packages - npm install react-router-dom axios jwt-decode react-toastify
+2. npm install jwt-decode
+react-icons, dotenv
